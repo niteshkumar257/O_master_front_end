@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 
 UI : 
 
-Laptop / Destop 
+Laptop / Desktop 
 
 ![alt text](image.png)
 ![
@@ -20,4 +20,10 @@ Laptop / Destop
 ![alt text](image-4.png)
 
 Mobile : 
+
+![WhatsApp Image 2024-06-06 at 12 37 11 PM](https://github.com/niteshkumar257/O_master_front_end/assets/78474492/65bd5e5c-7c99-4e33-808d-6408949ad42a)
+![game1](https://github.com/niteshkumar257/O_master_front_end/assets/78474492/f174840f-5990-4b36-9b18-2a7bfee592b1)
+![game2](https://github.com/niteshkumar257/O_master_front_end/assets/78474492/15319526-3893-42b5-b7c6-1b60a49fdd54)
+![game5](https://github.com/niteshkumar257/O_master_front_end/assets/78474492/3bc5d96d-4d40-49d4-ab7e-c4b007b86bb9)![game3](https://github.com/niteshkumar257/O_master_front_end/assets/78474492/95563793-2b95-474d-91d6-f421c8e4a8bd)
+![game4](https://github.com/niteshkumar257/O_master_front_end/assets/78474492/6f9a09eb-8c65-4d28-9c43-57e5bf6c528c)
 
