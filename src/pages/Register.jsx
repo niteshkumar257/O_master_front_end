@@ -4,7 +4,7 @@ import Logo from "../assets/logo.svg";
 import GoogleSvg from "../assets/icons8-dice-48.png";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { API_URL } from "../api";
 import axios from "axios";
@@ -16,69 +16,52 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading,setIsLoading]=useState(false);
-  const navigate=useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  
   const token = localStorage.getItem("token");
   
-  useEffect(()=>{
-    if(token){
+  useEffect(() => {
+    if (token) {
       navigate('/home');
     }
+  }, []);
 
-  },[])
+  const validateForm = () => {
+    if (!name || !email || !password) {
+      setError("Name ,Email and Password is required");
+      return false;
+    }
+    return true;
+  };
 
-  const Register = () => {
-    if (!email) {
+  const registerUser = () => {
+    if (!validateForm()) {
+      return;
     }
-    if (!password) {
-    }
-    if (!name) {
-    }
-    
+
     setIsLoading(true);
-    axios.post(`${API_URL}/user/register`,{
-      name,email,password
+    axios.post(`${API_URL}/user/register`, {
+      name,
+      email,
+      password
     })
-    .then((res)=>{
+    .then((res) => {
       setIsLoading(false);
-    
-      const {token}=res.data;
-      localStorage.setItem('token',token);
+      const { token } = res.data;
+      localStorage.setItem('token', token);
       navigate('/home');
-
-    }).catch((err)=>{
-      
-      if(err.response.status)
-        {
-          if(err.response.status===400)
-            {
-              toast.error('User alredy exit', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-            }else
-            {
-              toast.error('Something went wrong please try again', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-            }
-        }
-      setIsLoading(false);
     })
-
+    .catch((err) => {
+      setIsLoading(false);
+      if (err.response && err.response.status === 400) {
+        setError('User already exists');
+      } else {
+        setError('Something went wrong. Please try again');
+      }
+    });
   };
 
   return (
@@ -92,13 +75,13 @@ const Register = () => {
             <h2>Welcome back!</h2>
             <p>Please enter your details</p>
             <form>
-              <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)} />
-              <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} />
+              <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
+              <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
               <div className="pass-input-div">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 {showPassword ? (
                   <FaEyeSlash
@@ -115,21 +98,11 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="login-center-options">
-                {/* <div className="remember-div">
-                  <input type="checkbox" id="remember-checkbox" />
-                  <label htmlFor="remember-checkbox">
-                    Remember for 30 days
-                  </label>
-                </div> */}
-                <a href="#" className="forgot-pass-link">
-                  Forgot password?
-                </a>
-              </div>
               <div className="login-center-buttons">
-                <button type="button" onClick={Register}>{isLoading ? "Loading .." : "Register"}</button>
+                <button type="button" onClick={registerUser}>{isLoading ? "Loading .." : "Register"}</button>
               </div>
             </form>
+            {error && <p style={{color:'red'}}>{error}</p>}
           </div>
 
           <p className="login-bottom-p">
@@ -137,7 +110,7 @@ const Register = () => {
           </p>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

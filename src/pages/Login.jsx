@@ -164,7 +164,7 @@ const Login = () => {
               </div>
             </form>
             {
-              errorMessage && <p>{errorMessage}</p>
+              errorMessage && <p style={{color:"red"}}>{errorMessage}</p>
             }
           </div>
 
