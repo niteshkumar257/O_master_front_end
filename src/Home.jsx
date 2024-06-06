@@ -29,6 +29,7 @@ const Home = () => {
       {
         
         navigate('/login');
+        return ;
       }
 
   },[])
