@@ -1,0 +1,129 @@
+.dice {
+  width: 100px;
+  height: 100px;
+  perspective: 1000; /* Adjust for 3D effect depth */
+  transform-style: preserve-3d;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+
+.dice.rolling {
+  /* Add your desired rolling animation styles here */
+  animation: roll 0.5s linear infinite;
+}
+
+@keyframes roll {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+.side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.front,
+.back {
+  transform: translateZ(50px);
+}
+
+.left,
+.right {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.top,
+.bottom {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.dot {
+  width: 15px; /* Adjust dot size as desired */
+  height: 15px; /* Adjust dot size as desired */
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.dot.top {
+  top: 25%; /* Adjust dot position as desired */
+}
+
+.dot.bottom {
+  bottom: 25%; /* Adjust dot position as desired */
+}
+
+.dot.left {
+  left: 25%; /* Adjust dot position as desired */
+}
+
+.dot.right {
+  right: 25%; /* Adjust dot position as desired */
+}
+
+.dot.center {
+  top: 50%; /* Adjust dot position as desired */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the dot */
+}
+
+.dot.front,
+.dot.back {
+  opacity: 0; /* Hide dots on front and back faces */
+}
+.not_found_page{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+/* styles.css */
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.game-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 15rem;
+}
+
+.game-item p {
+ 
+
+   width: 22vw;
+ 
+  font-size: 1.5rem;
+}
+@media(max-width: 900px){
+  .game-item p{
+    
+     font-size: 1rem;
+     
+    
+    }
+  .game-item{
+     column-gap: 1.5rem;
+  }   
+}
+

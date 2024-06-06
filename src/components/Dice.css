@@ -1,0 +1,42 @@
+.dice {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  perspective: 600px;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.face.front { transform: rotateY(0deg) translateZ(50px); }
+.face.back { transform: rotateY(180deg) translateZ(50px); }
+.face.top { transform: rotateX(-90deg) translateZ(50px); }
+.face.bottom { transform: rotateX(90deg) translateZ(50px); }
+.face.left { transform: rotateY(-90deg) translateZ(50px); }
+.face.right { transform: rotateY(90deg) translateZ(50px); }
+
+.dice-1 .face:not(.front) .dot:nth-child(1) { top: 40px; left: 40px; }
+.dice-2 .face:not(.front) .dot:nth-child(1) { top: 20px; left: 20px; }
+.dice-2 .face:not(.front) .dot:nth-child(2) { bottom: 20px; right: 20px; }
+.dice-3 .face:not(.front) .dot:nth-child(1) { top: 20px; left: 20px; }
+.dice-3 .face:not(.front) .dot:nth-child(2) { top: 40px; left: 40px; }
+.dice-3 .face:not(.front) .dot:nth-child(3) { bottom: 20px; right: 20px; }
+.dice-4 .face:not(.front) .dot:nth-child(1) { top: 20px; left: 20px; }
+.dice-4 .face:not(.front) .dot:nth-child(2) { bottom: 20px; left: 20px; }
+.dice-4 .face:not(.front) .dot:nth-child(3) { top: 40px; right: 20px; }
+.dice-4 .face:not(.front) .dot:nth-child(4) { bottom: 40px; right: 20px; }
+.dice-5 .face:not(.front) .dot:nth-child(1) { top: 20px; left: 20px; }
+.dice-5 .face:not(.front) .dot:nth-child(2) { bottom: 20px; left: 20px}
