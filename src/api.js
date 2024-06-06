@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:8080/api/v1";
+// export const API_URL = "http://localhost:8080/api/v1";
+export const API_URL = "https://o-master-back-end.onrender.com/api/v1";
 
 export const rollDice = async (betAmount, betType) => {
   const response = await axios.post(`${API_URL}/game/roll`, {

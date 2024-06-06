@@ -43,7 +43,6 @@ const Home = () => {
       .get(`${API_URL}/game/getPoints/${userId}`)
       .then((res) => {
         let { points } = res.data;
-        console.log(res.data);
         setPoints(points);
       })
       .catch((err) => {
